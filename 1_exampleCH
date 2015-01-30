@@ -1,0 +1,9 @@
+setClass("Person", representation(name = "character", age = "numeric"))
+hadley <- new("Person", name = "Hadley", age = 31)
+hadley@age
+point <- data.frame(x = 1, y = 1 )
+point$x
+setClass("Point", representation(x = "numeric", y = "numeric"))
+setClass("trajectory", representation(points = "vector"))
+testt <- new("trajectory", points=c(new("Point", x=1, y=2),new("Point", x=2, y=2)))
+testt@points

@@ -1,0 +1,283 @@
+<Project>
+  <Name>GazeAnalize</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>ExperimentClass</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>AOI</Name>
+        <Access>Public</Access>
+        <Location left="18" top="13" />
+        <Size width="376" height="196" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public character name</Member>
+        <Member type="Field">public factor type</Member>
+        <Member type="Field">public factor shape</Member>
+        <Member type="Field">public list characteristics</Member>
+        <Member type="Method">public numeric PxArea(list Characteristics)</Member>
+        <Member type="Method">public list EvalAngularSize(list Characteristics, list ExpCond)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AOISet</Name>
+        <Access>Public</Access>
+        <Location left="446" top="13" />
+        <Size width="411" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public list_of_AOI AOISet</Member>
+        <Member type="Method">public AOISet RemoveAOI(AOISet self, character name)</Member>
+        <Member type="Method">public AOISet AddAOI(AOISet self, AOI area)</Member>
+        <Member type="Method">public AOISet UpdateAOI(AOISet self, AOI area, character name, numeric id)</Member>
+        <Member type="Method">public character_vector GetNames(AOISet self)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AOIList</Name>
+        <Access>Public</Access>
+        <Location left="18" top="234" />
+        <Size width="483" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public list_of_AOI_set ListOfAOIS</Member>
+        <Member type="Method">public AOIList AddSet(AOIList self, list_of_AOI AOISet)</Member>
+        <Member type="Method">public AOIList RemoveSet(AOIList self, numeric AOISetId)</Member>
+        <Member type="Method">public AOIList UpdateSet(AOIList self, numeric AOISetId, list_of_AOI AOISet)</Member>
+        <Member type="Method">public AOIList CreateGrid(AOIList self, numeric w, numeric h, numeric dimX, numeric dimY)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Stimulus</Name>
+        <Access>Public</Access>
+        <Location left="901" top="13" />
+        <Size width="545" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public numeric id</Member>
+        <Member type="Field">public character name</Member>
+        <Member type="Field">public character description</Member>
+        <Member type="Field">public character path</Member>
+        <Member type="Field">public list dimensions</Member>
+        <Member type="Method">public list EvalDimensions(character path)</Member>
+        <Member type="Method">public list EvalAngularSize(list characteristics, list expCond)</Member>
+        <Member type="Method">public graphics DrawAOISet(list_of_AOI AOISet)</Member>
+        <Member type="Method">public graphics DrawHeatMap(numeric type, data.frame points, data.frame fixations, list_of_AOI AOISet)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>EventList</Name>
+        <Access>Public</Access>
+        <Location left="1808" top="36" />
+        <Size width="519" height="213" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public data.frame saccades</Member>
+        <Member type="Field">public data.frame glissades</Member>
+        <Member type="Field">public data.frame fixations</Member>
+        <Member type="Field">public data.frame blinks</Member>
+        <Member type="Field">public data.frame artefacts</Member>
+        <Member type="Method">public data.frame EventOverallStatistic(Trajectory trajectory, numeric Event, numeric statistic)</Member>
+        <Member type="Method">public data.frame EventAOIStatistic(Trajectory trajectory, numeric Event, numeric statistic, numeric AOISetId)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Monocular</Name>
+        <Access>Public</Access>
+        <Location left="1680" top="296" />
+        <Size width="287" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public list expCond</Member>
+        <Member type="Field">public Trajectory eyeData</Member>
+        <Member type="Field">public numeric trialID</Member>
+        <Member type="Method">public list SetConditions(Monocular self, list conditions)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Trajectory</Name>
+        <Access>Public</Access>
+        <Location left="2027" top="311" />
+        <Size width="464" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public data.frame points</Member>
+        <Member type="Field">public EventL eventList</Member>
+        <Member type="Method">public data.frame FindArtefacts(data.frame points, list situationParam, boolean markPoints)</Member>
+        <Member type="Method">public list Summary(data.frame points)</Member>
+        <Member type="Method">public list AOISummary(numeric AOISetId)</Member>
+        <Member type="Method">public data.frame Smooth(data.frame points, numeric method)</Member>
+        <Member type="Method">public data.frame EstimateVelocity(data.frame points, list expCond)</Member>
+        <Member type="Method">public data.frame EstimateAcceleration(data.frame points, list expCond)</Member>
+        <Member type="Method">public EventL IDT(data.frame points, list expCond, boolean markPoints)</Member>
+        <Member type="Method">public EventL IVT(data.frame points, list expCond, boolean markPoints)</Member>
+        <Member type="Method">public data.frame AdaptiveNH(data.frame points, list expCond, boolean markPoints)</Member>
+        <Member type="Method">public graphics Plot(data.frame points, numeric type, vector markers)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Binocular</Name>
+        <Access>Public</Access>
+        <Location left="1680" top="459" />
+        <Size width="289" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public Trajectory leftEyeData</Member>
+        <Member type="Field">public Trajectory rightEyeData</Member>
+        <Member type="Field">public list expCond</Member>
+        <Member type="Field">public numeric trialID</Member>
+        <Member type="Method">public list SetConditions(Biocular self, list conditions)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MetaExperiment</Name>
+        <Access>Public</Access>
+        <Location left="624" top="296" />
+        <Size width="595" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public character name</Member>
+        <Member type="Field">public character description</Member>
+        <Member type="Field">public character author</Member>
+        <Member type="Field">public list expCond</Member>
+        <Member type="Field">public list_of_Stimulus stimuli</Member>
+        <Member type="Field">public AOIList AOIL</Member>
+        <Member type="Field">public data.frame TAS</Member>
+        <Member type="Method">public MetaExperiment LoadStimuli(list_of_paths paths, MetaExperiment self)</Member>
+        <Member type="Method">public MetaExperiment LoadAOIL(AOIList AOI, MetaExperiment self)</Member>
+        <Member type="Method">public MetaExperiment SetTAS(data.frame TAS, MetaExperiment self)</Member>
+        <Member type="Method">public MetaExperiment UpdExpInf(MetaExperiment self, character name, character description, character author)</Member>
+        <Member type="Method">public MetaExperiment SetExpCond(list conditions, MetaExperiment self)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Subject</Name>
+        <Access>Public</Access>
+        <Location left="1887" top="638" />
+        <Size width="341" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public character name</Member>
+        <Member type="Field">public TD_list trajData</Member>
+        <Member type="Method">public TD_list AddTrajData(Monocular MD)</Member>
+        <Member type="Method">public TD_list AddTrajData(Binocular BD)</Member>
+        <Member type="Method">public TD_list RemoveTrajData(numeric id)</Member>
+        <Member type="Method">public TD_list SelectDataByTrials(numeric_vector trialId)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ExperimentData</Name>
+        <Access>Public</Access>
+        <Location left="516" top="899" />
+        <Size width="580" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public list_of_subj SubjectData</Member>
+        <Member type="Field">public data.frame PFactors</Member>
+        <Member type="Method">public ExperimentData LoadData(ExperimentData self, character folder, numeric dataSource)</Member>
+        <Member type="Method">public ExperimentData AddSubject(ExperimentData self, character name)</Member>
+        <Member type="Method">public ExperimentData RemoveSubject(ExperimentData self, character name)</Member>
+        <Member type="Method">public ExperimentData SelectSubjectsByFactors(ExperimentData self, character logicalExpression)</Member>
+        <Member type="Method">public ExperimentData EvalStatistics(ExperimentData self)</Member>
+        <Member type="Method">public file ExportStatistics(ExperimentData self, character fileName, numeric format)</Member>
+        <Member type="Method">public matrix EvalDistanceMatrix(ExperimentData self)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="1" second="0">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="2" second="1">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>555</X>
+          <Y>253</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="7" second="6">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="5" second="6">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="8" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1203</X>
+          <Y>269</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="10" second="9">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Generalization" first="8" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>756</X>
+          <Y>602</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>619</X>
+          <Y>874</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="9" second="7">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1860</X>
+          <Y>670</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1655</X>
+          <Y>642</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="8" second="2">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>597</X>
+          <Y>349</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>529</X>
+          <Y>348</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="9" second="5">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1848</X>
+          <Y>706</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1612</X>
+          <Y>322</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="6" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
